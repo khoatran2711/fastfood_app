@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <h3 class="title">
+        Lịch sử đơn hàng
+      </h3>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="orders && orders.length > 0; else noOrders">
+    <ion-card *ngFor="let order of orders">
+      <ion-card-header>
+        <ion-card-title>Hóa đơn: {{ order.id }}</ion-card-title>
+        <p>Ngày đặt: {{ order.created_at  }}</p>
+        <p>Tổng tiền: ${{ order.totalPrice }}</p>
+        <p>Trạng thái: {{ statusData[order.status] }}</p>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-list>
+          <ion-item *ngFor="let product of order.products">
+            <ion-thumbnail slot="start">
+              <img [src]="getImageUrl(product.thumbnail)" alt="Product Image">
+            </ion-thumbnail>
+            <ion-label>
+              <h3>{{ product.name }}</h3>
+              <p>Số lượng: {{ product.quantity }}</p>
+              <p>Giá tiền: ${{ product.price }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <ng-template #noOrders>
+    <ion-text>No orders found.</ion-text>
+  </ng-template>
+</ion-content>

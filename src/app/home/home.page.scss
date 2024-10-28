@@ -1,0 +1,14 @@
+ion-tab-bar {
+  padding: 10px 0;
+
+  ion-tab-button {
+    ion-icon {
+      font-size: 1.7rem;
+    }
+  }
+}
+ion-tab-bar {
+  --background: #f3f3f3; /* Background color of the tab bar */
+  --color: #888888; /* Inactive color */
+  --color-selected: #6b45bc; /* Active tab color */
+}

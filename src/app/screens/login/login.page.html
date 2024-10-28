@@ -1,0 +1,84 @@
+<ion-content [fullscreen]="true">
+
+  <!-- Login Page -->
+  <div class="container" *ngIf="screen == 'signin'">
+    <h1 class="heading">👋 Fast Food<br><br></h1>
+    <p class="para">Đăng Nhập</p>
+    <form [formGroup]="loginForm">
+      <ion-item lines="none" class="ion-item">
+        <fieldset class="input-item">
+          <legend>Số điện thoại</legend>
+          <ion-input formControlName="phoneNumber" type="text" placeholder="Nhập tài khoản ..."></ion-input>
+        </fieldset>
+      </ion-item>
+      <ion-item lines="none" class="ion-item">
+        <fieldset class="input-item">
+          <legend>Mật khẩu</legend>
+          <ion-input formControlName="password" type="password" placeholder="*******"></ion-input>
+        </fieldset>
+      </ion-item>
+      <ion-button class="login-button btn-bg-primary" (click)="login()" expand="block">Đăng nhập</ion-button>
+      <!-- <app-button (click)="login()">Login</app-button> -->
+      <ion-button (click)="change('signup')" class="google-button btn-bg-primary" expand="block" color="light">Đăng
+        Ký</ion-button>
+    </form>
+  </div>
+
+  <!-- Sign up page -->
+  <div class="container" *ngIf="screen == 'signup'">
+    <h1 class="heading">👋 Fast Food<br><br></h1>
+    <p class="para">Đăng Ký</p>
+
+    <form [formGroup]="registerForm">
+      <ion-item lines="none" class="ion-item">
+        <fieldset class="input-item">
+          <legend>Họ và tên</legend>
+          <ion-input formControlName="fullName" type="text" placeholder="Nhập họ và tên ..."></ion-input>
+        </fieldset>
+      </ion-item>
+      <ion-item lines="none" class="ion-item">
+        <fieldset class="input-item">
+          <legend>Địa chỉ</legend>
+          <ion-input formControlName="address" type="text" placeholder="Nhập địa chỉ ..."></ion-input>
+        </fieldset>
+      </ion-item>
+      <ion-item lines="none" class="ion-item">
+        <fieldset class="input-item">
+          <legend>Số điện thoại</legend>
+          <ion-input formControlName="phoneNumber" type="email" placeholder="Nhập số điện thoại ..."></ion-input>
+        </fieldset>
+      </ion-item>
+      <ion-item lines="none" class="ion-item">
+        <fieldset class="input-item">
+          <legend>Password</legend>
+          <ion-input formControlName="password" type="password" placeholder="*******"></ion-input>
+        </fieldset>
+      </ion-item>
+      <p class="signup-text">Đã có tài khoản&nbsp;<a (click)="change('signin')">Đăng nhập?</a></p>
+      <!-- <ion-button class="login-button" (click)="register()" expand="block">Sign Up</ion-button> -->
+      <ion-button class="login-button btn-bg-primary  " (click)="register()" expand="block">Đăng Ký</ion-button>
+
+    </form>
+  </div>
+
+  <!-- Forget password page
+  <div class="container" *ngIf="screen == 'forget'">
+    <h1 class="heading">Forget Password?<br><br></h1>
+    <p class="para">Enter email to reset</p>
+    <ion-item lines="none" class="ion-item">
+      <fieldset class="input-item">
+        <legend>Email Id</legend>
+        <ion-input type="email" placeholder="name@domain.com"></ion-input>
+      </fieldset>
+    </ion-item>
+    <p class="signup-text">Rememberd Password&nbsp;<a (click)="change('signin')">Sign In?</a></p>
+    <ion-button class="login-button" expand="block">Reset Password</ion-button>
+  </div> -->
+
+
+</ion-content>
+<!-- <ion-footer color="white">
+  <ion-toolbar>
+    <p class="copyright">Crafted in ❤️ by&nbsp;<a>Adenwalla</a></p>
+  </ion-toolbar>
+</ion-footer> -->

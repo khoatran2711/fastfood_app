@@ -1,0 +1,30 @@
+
+<ion-content>
+  <!-- Search Bar -->
+  <!-- <app-searchbar></app-searchbar>
+    -->
+
+    <ion-searchbar [(ngModel)]="searchQuery" (ionInput)="filterItems($event)" placeholder="Search items..."></ion-searchbar>
+
+
+  <!-- List of Filtered Items -->
+  <ion-list *ngIf="filteredItems.length > 0">
+    <ion-item *ngFor="let item of filteredItems">
+      <div class="img-thumb">
+        <img class="thumbnail" [src]="getImage(item.thumbnail)" />
+
+      </div>
+      <ion-label>
+        <h2>{{ item.name }}</h2>
+        <p>{{ item.description }}</p>
+        <p><strong>Price:</strong> ${{ item.price }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- No Results Found -->
+  <ion-text *ngIf="filteredItems.length === 0 && searchQuery">
+    No items found.
+  </ion-text>
+</ion-content>
+
