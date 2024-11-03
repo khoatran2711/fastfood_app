@@ -1,0 +1,31 @@
+<ion-content>
+  <div class="header">
+    <ion-toolbar class="new-background-color">
+      <div class="flex">
+        <ion-buttons>
+          <ion-button routerLink="/home/listing">
+            <ion-icon slot="icon-only" color='light' name="arrow-back"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+
+        <ion-title>
+          <h4>{{categoryData?.name}}</h4>
+        </ion-title>
+      </div>
+    </ion-toolbar>
+  </div>
+
+  <ion-list *ngIf="foodData.length > 0">
+    <ion-item *ngFor="let item of foodData" (click)="goToDetailPage(item.id)">
+      <div class="img-thumb">
+        <img class="thumbnail" [src]="getImage(item.thumbnail)" />
+
+      </div>
+      <ion-label>
+        <h2>{{ item.name }}</h2>
+        <p>{{ item.description }}</p>
+        <p><strong>Price:</strong> ${{ item.price }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

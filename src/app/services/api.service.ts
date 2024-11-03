@@ -16,8 +16,17 @@ export class ApiService {
   register(data: any) {
     return this.httpClient.post(ADMIN_URL.register, data);
   }
+  updateProfile(data: any) {
+    return this.httpClient.post(ADMIN_URL.updateProfile, data);
+  }
+  changePassword(data: any) {
+    return this.httpClient.post(ADMIN_URL.changePassword, data);
+  }
   listCategory() {
     return this.httpClient.get(ADMIN_URL.allCategory);
+  }
+  getCategory(id) {
+    return this.httpClient.get(ADMIN_URL.getCategory+ '?id=' + id);
   }
   listFood() {
     return this.httpClient.get(ADMIN_URL.allFood);

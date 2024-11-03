@@ -9,7 +9,7 @@
 
   <!-- List of Filtered Items -->
   <ion-list *ngIf="filteredItems.length > 0">
-    <ion-item *ngFor="let item of filteredItems">
+    <ion-item *ngFor="let item of filteredItems" (click)="goToDetailPage(item.id)">
       <div class="img-thumb">
         <img class="thumbnail" [src]="getImage(item.thumbnail)" />
 

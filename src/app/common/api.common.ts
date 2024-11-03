@@ -5,7 +5,8 @@ const get = (endpoint) => environment.host + '/api/v1/customer/' + endpoint;
 export const ADMIN_URL = {
   login: get('auth/login'),
   register: get('auth/register'),
-
+  updateProfile: get('auth/updateInfo'),
+  changePassword: get('auth/changePassword'),
   //category
   listCategory: get('category/list'),
   allCategory: get('category/all'),

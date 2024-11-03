@@ -2,18 +2,20 @@
   <!-- HEADER -->
   <div class="header">
     <h1>Menu</h1>
-    <div class="avatar">
+    <div class="avatar" (click)="presentActionSheet()">
       <ion-img src="assets\images\face.png"></ion-img>
     </div>
   </div>
 
   <!-- SEARCHBAR -->
-  <app-searchbar></app-searchbar>
+   <div (click)="goToSearchPage()">
+    <app-searchbar></app-searchbar>
+   </div>
 
   <!-- CATEGORY -->
   <div class="categories">
     <app-category-item [item]="defaulatCate"></app-category-item>
-    <app-category-item *ngFor="let item of categories" [item]="item"></app-category-item>
+    <app-category-item *ngFor="let item of categories" [item]="item" (clicked)="goToCategoryPage(item.id)"></app-category-item>
   </div>
 
   <!-- PRODUCTS -->

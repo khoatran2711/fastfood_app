@@ -1,0 +1,94 @@
+<ion-content>
+  <div class="header">
+    <ion-toolbar class="new-background-color">
+      <div class="flex">
+        <ion-buttons>
+          <ion-button routerLink="/home/listing">
+            <ion-icon slot="icon-only" color='light' name="arrow-back"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+
+        <ion-title>
+          <h4>{{screen == 'info' && 'Thông tin cá nhân' || screen == 'change_pass' && 'Đổi mật khẩu'}}</h4>
+        </ion-title>
+      </div>
+    </ion-toolbar>
+  </div>
+  <div class="info_form" *ngIf="screen == 'info'">
+    <ion-list>
+      <form [formGroup]="profileForm">
+        <ion-item lines="none" class="ion-item">
+          <fieldset class="input-item">
+            <legend>Họ và tên</legend>
+            <ion-input formControlName="fullName" type="text" placeholder="Nhập tài khoản ..."></ion-input>
+          </fieldset>
+        </ion-item>
+        <ion-item lines="none" class="ion-item">
+          <fieldset class="input-item">
+            <legend>Số điện thoại</legend>
+            <ion-input formControlName="phoneNumber" type="text" placeholder="Nhập tài khoản ..."></ion-input>
+          </fieldset>
+        </ion-item>
+        <ion-item lines="none" class="ion-item">
+          <fieldset class="input-item">
+            <legend>Địa chỉ</legend>
+            <ion-input formControlName="address" type="text" placeholder="Nhập tài khoản ..."></ion-input>
+          </fieldset>
+        </ion-item>
+        <!-- <ion-item lines="none" class="ion-item">
+          <fieldset class="input-item">
+            <legend>Mật khẩu</legend>
+            <ion-input formControlName="password" type="password" placeholder="*******"></ion-input>
+          </fieldset>
+        </ion-item> -->
+        <ion-button (click)="submitProfile()" class="google-button btn-bg-primary " expand="block">Xác
+          nhận</ion-button>
+        <ion-button (click)="change('change_pass')" class="login-button btn-bg-primary" expand="block" color="light">Đổi
+          mật khẩu</ion-button>
+      </form>
+    </ion-list>
+  </div>
+  <div class="changePassForm" *ngIf="screen == 'change_pass'">
+    <ion-list>
+      <form [formGroup]="passwordForm">
+        <ion-item lines="none" class="ion-item">
+          <fieldset class="input-item">
+            <legend>Mật khẩu</legend>
+            <ion-input [type]="showPassword ? 'text' : 'password'" formControlName="password"
+              placeholder="Nhập mật khẩu..."></ion-input>
+            <ion-icon slot="end" name="{{ showPassword ? 'eye-off' : 'eye' }}"
+              (click)="togglePasswordVisibility('password')" style="cursor: pointer;"></ion-icon>
+          </fieldset>
+        </ion-item>
+        <ion-item lines="none" class="ion-item">
+          <fieldset class="input-item">
+            <legend>Mật khẩu mới</legend>
+            <ion-input formControlName="newPassword" [type]="showNewPassword ? 'text' : 'password'"
+              placeholder="Nhập tài khoản ..."></ion-input>
+            <ion-icon slot="end" name="{{ showNewPassword ? 'eye-off' : 'eye' }}"
+              (click)="togglePasswordVisibility('newPassword')" style="cursor: pointer;"></ion-icon>
+          </fieldset>
+        </ion-item>
+        <ion-item lines="none" class="ion-item">
+          <fieldset class="input-item">
+            <legend>Xác nhận mật khẩu</legend>
+            <ion-input formControlName="confirmPassword" [type]="showConfirmPassword ? 'text' : 'password'"
+              placeholder="Nhập tài khoản ..."></ion-input>
+            <ion-icon slot="end" name="{{ showConfirmPassword ? 'eye-off' : 'eye' }}"
+              (click)="togglePasswordVisibility('confirmPassword')" style="cursor: pointer;"></ion-icon>
+          </fieldset>
+        </ion-item>
+        <!-- <ion-item lines="none" class="ion-item">
+          <fieldset class="input-item">
+            <legend>Mật khẩu</legend>
+            <ion-input formControlName="password" type="password" placeholder="*******"></ion-input>
+          </fieldset>
+        </ion-item> -->
+        <ion-button (click)="submitPassword()" class="google-button btn-bg-primary " expand="block">Xác
+          nhận</ion-button>
+        <ion-button (click)="change('info')" class="login-button btn-bg-primary" expand="block" color="light">Thay đổi
+          thông tin cá nhân</ion-button>
+      </form>
+    </ion-list>
+  </div>
+</ion-content>

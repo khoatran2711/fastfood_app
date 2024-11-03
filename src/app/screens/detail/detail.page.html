@@ -5,11 +5,11 @@
         <ion-icon slot="icon-only" color='light' name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-buttons>
+    <!-- <ion-buttons>
       <ion-button>
         <ion-icon slot="icon-only" color='light' name="d-heart"></ion-icon>
       </ion-button>
-    </ion-buttons>
+    </ion-buttons> -->
   </div>
 
   <!-- FOOD DETAIL CARD -->
@@ -21,7 +21,7 @@
     <div class="card-content">
       <div class="card-title">
         <h1 class="ion-no-margin">{{food?.name}}</h1>
-        <p class="ion-no-margin"><sup>$</sup> {{food?.price | number: '1.2'}}</p>
+        <p class="ion-no-margin">{{food?.price | number: '1.2'}}<sup>$</sup> </p>
       </div>
     </div>
 

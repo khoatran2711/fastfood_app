@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -8,12 +9,11 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./search.page.scss'],
 })
 export class SearchPage implements OnInit {
-
   searchQuery = '';
-  items: Array<{ name: string; thumbnail: string; price: string; description: string }> = [];
-  filteredItems: Array<{ name: string; thumbnail: string; price: string; description: string }> = [];
+  items = [];
+  filteredItems = [];
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit() {
     this.loadItems();
@@ -32,19 +32,22 @@ export class SearchPage implements OnInit {
     const query = event.target.value.toLowerCase();
 
     if (query && query.trim() !== '') {
-      this.filteredItems = this.items.filter(item =>
-        item.name.toLowerCase().includes(query) ||
-        item.description.toLowerCase().includes(query)
+      this.filteredItems = this.items.filter(
+        (item) =>
+          item.name.toLowerCase().includes(query) ||
+          item.description.toLowerCase().includes(query)
       );
     } else {
-      this.filteredItems = [...this.items]; // Show all items if the search query is empty
+      this.filteredItems = [...this.items];
     }
   }
   getImage(image: string) {
     if (image.includes('http') || image.includes('assets')) {
       return image;
-
     }
     return environment.host + image;
+  }
+  goToDetailPage(id: number) {
+    this.router.navigate(['detail', id]);
   }
 }

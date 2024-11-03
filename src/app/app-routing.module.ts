@@ -33,10 +33,19 @@ const routes: Routes = [
   {
     path: 'order-history',
     loadChildren: () => import('./screens/order-history/order-history.module').then( m => m.OrderHistoryPageModule)
-  },  {
+  },
+  {
     path: 'search',
     loadChildren: () => import('./screens/search/search.module').then( m => m.SearchPageModule)
   },
+  {
+    path: 'category/:id',
+    loadChildren: () => import('./screens/category/category.module').then( m => m.CategoryPageModule)
+  },  {
+    path: 'edit-profile',
+    loadChildren: () => import('./screens/edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
+  },
+
 
 
 

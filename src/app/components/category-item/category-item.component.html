@@ -1,4 +1,4 @@
-<div class="wrapper" [ngClass]="item.active ? 'active' : ''">
+<div class="wrapper" [ngClass]="item.active ? 'active' : ''"  (click)="clicked.emit()">
   <div class="image-card">
     <ion-img  [src]="getImage(item?.thumbnail)"></ion-img>
   </div>
