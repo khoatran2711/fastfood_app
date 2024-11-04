@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { CartItem } from 'src/app/models/cart-item.model';
@@ -23,7 +24,7 @@ export class CartPage implements OnInit {
     private apiService: ApiService,
     private userService: UserService,
     private toastCtrl: ToastController,
-
+    private router: Router
   ) {}
   // ionViewWillEnter() {
   //   this.cartItems$ = this.cartService.getCart();
@@ -81,6 +82,18 @@ export class CartPage implements OnInit {
       duration: 1500,
     });
     const user = this.userService.getUser();
+    if(!user){
+      const toast = await this.toastCtrl.create({
+        message: 'Hãy đăng nhập để sử dụng chức năng này !',
+        mode: 'ios',
+        duration: 1000,
+        position: 'top',
+      });
+      toast.present();
+
+      this.userService.removeUser();
+      this.router.navigate(['login']);
+    }
     let products: CartItem[] = [];
     this.cartItems$.subscribe(items => products = items);
 
