@@ -90,7 +90,6 @@ export class CartPage implements OnInit {
         position: 'top',
       });
       toast.present();
-
       this.userService.removeUser();
       this.router.navigate(['login']);
     }
